@@ -1,0 +1,41 @@
+.topsTable {
+  width: 300px;
+
+  tr {
+    text-align: center;
+  }
+
+  tbody {
+    tr {
+      border-bottom: 1px solid var(--grey-color);
+
+      td {
+        padding-top: 5px;
+      }
+    }
+  }
+}
+
+.topsTableThead {
+  width: 100%;
+  text-align: center;
+  background: var(--light-grey);
+
+  th {
+    padding-right: 5px;
+    font-weight: 400;
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+}
+
+.positive {
+  font-weight: 500;
+  color: var(--positive-color);
+}
+
+.negative {
+  font-weight: 500;
+  color: var(--negative-color);
+}

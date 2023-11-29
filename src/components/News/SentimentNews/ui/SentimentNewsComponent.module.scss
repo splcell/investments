@@ -1,0 +1,39 @@
+.topicsList {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.topicsWrapper{
+  margin: 20px 0;
+}
+
+.topic {
+  width: max-content;
+  background: grey;
+  padding: 0 5px;
+  border-radius: 5px;
+  color: var(--white-color);
+  font-weight: 500;
+  cursor: pointer;
+  transition: .3s all;
+
+  &:hover{
+    background: var(--main-color);
+  }
+
+}
+
+.topic-active{
+  background: var(--main-color);
+}
+
+.sentimentTitle{
+  margin-bottom: 10px;
+}
+
+.sentimentsList{
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}

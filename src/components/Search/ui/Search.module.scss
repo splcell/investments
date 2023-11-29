@@ -1,0 +1,29 @@
+.input {
+  width: 600px;
+  height: max-content;
+  background: var(--white-color);
+  padding: 5px 10px;
+  outline: none;
+  border: none;
+}
+
+.resultsWrapper{
+  position: relative;
+}
+
+.resultsList{
+  position: absolute;
+  height: 300px;
+  bottom: -301px;
+  left: 0;
+  right: 0;
+  cursor: auto;
+}
+
+.ticker{
+  width: 50px;
+}
+
+.name{
+  width: 300px;
+}

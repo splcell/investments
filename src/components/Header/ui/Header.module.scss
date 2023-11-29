@@ -1,0 +1,16 @@
+.header{
+  background: var(--main-color);
+  padding: 10px 0;
+}
+
+.headerInner{
+  display: flex;
+  align-items: center;
+  column-gap: 200px;
+}
+
+.headerLink{
+  font-size: 25px;
+  font-weight: 700;
+  color: var(--white-color);
+}
