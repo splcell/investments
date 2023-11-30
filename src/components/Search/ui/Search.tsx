@@ -11,7 +11,7 @@ interface SearchData {
   currency: string;
   stockExchange: string;
   exchangeShortName: string;
-};
+}
 
 export const Search = memo(() => {
   const [search, setSearch] = useState("");
@@ -30,7 +30,7 @@ export const Search = memo(() => {
           //     item.symbol.includes(search) || item.name.includes(search)
           // );
 
-          setSearchResults(data)
+          setSearchResults(data);
         }
         // return [];
       });
@@ -41,40 +41,52 @@ export const Search = memo(() => {
   };
 
   const clearResults = useCallback(() => {
-    setSearchResults([])
-    setSearch('')
-  }, [])
+    setSearchResults([]);
+    setSearch("");
+  }, []);
 
   useEffect(() => {
-    if(search.trim() !== ''){
+    if (search.trim() !== "") {
       getSearchData(search);
+    }
+
+    if (search.trim() === "") {
+      setSearchResults([]);
+      setSearch("");
     }
   }, [search]);
 
-  
   const resultsRender = useMemo(() => {
-    if(searchResults.length > 0){
+    if (searchResults.length > 0) {
       return (
         <ul className={styles.resultsList}>
-          {searchResults.map(result => (
-            <SearchLink key={result.symbol} to={`/company/${result.symbol}`} onClick={clearResults}>
+          {searchResults.map((result) => (
+            <SearchLink
+              key={result.symbol}
+              to={`/company/${result.symbol}`}
+              onClick={clearResults}
+            >
               <span className={styles.ticker}>{result.symbol}</span>
-              <span className={styles.name}>{result.name.slice(0, 30) + '...'}</span>
-              <span className={styles.exchange}>{result.exchangeShortName}</span>
+              <span className={styles.name}>
+                {result.name.slice(0, 30) + "..."}
+              </span>
+              <span className={styles.exchange}>
+                {result.exchangeShortName}
+              </span>
               <span className={styles.currency}>{result.currency}</span>
             </SearchLink>
           ))}
         </ul>
-      )
+      );
     }
 
-    return null
-  }, [searchResults])
+    return null;
+  }, [searchResults]);
 
   return (
     <label className={styles.resultsWrapper} htmlFor="search">
       <input
-        type="text"
+        type="search"
         value={search}
         onChange={onChangeSearch}
         className={styles.input}

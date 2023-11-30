@@ -4,14 +4,9 @@
   margin: 20px 0;
 }
 
-.middleWrapper {
+.middleWrapper, .leftWrapper, .rightWrapper {
   display: flex;
   flex-direction: column;
   row-gap: 10px;
 }
 
-.leftWrapper {
-  display: flex;
-  flex-direction: column;
-  row-gap: 10px;
-}
