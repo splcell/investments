@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkinvestments=self.webpackChunkinvestments||[]).push([[414],{414:(e,n,s)=>{s.r(n),s.d(n,{default:()=>a});var t=s(893);const a=(0,s(294).memo)((function(){return(0,t.jsx)("div",{"data-testid":"company-page",children:(0,t.jsx)("h2",{children:"Company page"})})}))}}]);
