@@ -17,7 +17,7 @@ export const fetchingSentimentNews = createAsyncThunk(
 
       const data = await response.json()
 
-      return data.feed
+      return data
 
     } catch (error) {
       thunkApi.rejectWithValue(error)

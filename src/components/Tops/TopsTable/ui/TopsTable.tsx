@@ -30,22 +30,24 @@ export const TopsTable = memo(({ topData, sectorPerformance, indexes, sentiment 
           {topData.map((top) => (
             <tr key={top.symbol}>
               <td>{<Link to={`/company/${top.symbol}`}>{top.symbol}</Link>}</td>
-              <td>{top.price}</td>
+              <td>{top.price.toFixed(2)}</td>
               <td
                 className={cn({
                   [styles.positive]: sentiment === "positive" || top.change > 0,
                   [styles.negative]: sentiment === "negative" || top.change < 0,
+                  [styles.cellPadding]: top.changesPercentage >= 0
                 })}
               >
-                {top.change}
+                {top.change.toFixed(2)}
               </td>
               <td
                 className={cn({
                   [styles.positive]: sentiment === "positive" || top.changesPercentage > 0,
                   [styles.negative]: sentiment === "negative" || top.changesPercentage < 0,
+                  [styles.cellPadding]: top.changesPercentage >= 0
                 })}
               >
-                {top.changesPercentage.toFixed(1)}
+                {top.changesPercentage.toFixed(1)}%
               </td>
             </tr>
           ))}
@@ -71,7 +73,7 @@ export const TopsTable = memo(({ topData, sectorPerformance, indexes, sentiment 
                   [styles.positive]: sentiment === "positive" || Number(sector.changesPercentage.replace('%', '')) > 0,
                   [styles.negative]: sentiment === "negative" || Number(sector.changesPercentage.replace('%', '')) < 0,
                   [styles.cellPadding]: Number(sector.changesPercentage.replace('%', '')) >= 0
-                })}>{Number(sector.changesPercentage.replace('%', '')).toFixed(1)}</td>
+                })}>{Number(sector.changesPercentage.replace('%', '')).toFixed(1) + '%'}</td>
             </tr>
           ))}
         </tbody>
@@ -109,7 +111,7 @@ export const TopsTable = memo(({ topData, sectorPerformance, indexes, sentiment 
                   [styles.negative]: sentiment === "negative" || index.changesPercentage < 0,
                 })}
               >
-                {index.changesPercentage.toFixed(1)}
+                {index.changesPercentage.toFixed(1)}%
               </td>
             </tr>
           ))}

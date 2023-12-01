@@ -6,91 +6,41 @@ import { Link } from "react-router-dom";
 import styles from "./TopGainers.module.scss";
 import Table from "react-bootstrap/Table";
 import { TopsTable } from "components/Tops/TopsTable/ui/TopsTable";
+import { useSelector } from "react-redux";
+import { getGainersError, getGainersList, getGainersLoading } from "../model/selectors/topGainersSelectors";
+import { useAppDispatch } from "hooks/hooks";
+import { fetchingGainers } from "../model/services/fetchingGainers";
+import { Preloader } from "components/Preloader";
 
-const testGainers: Gainer[] = [
-  {
-    symbol: "PIK",
-    name: "Kidpik Corp.",
-    change: 0.27,
-    price: 1.8,
-    changesPercentage: 17.6471,
-  },
 
-  {
-    symbol: "PIK",
-    name: "Kidpik Corp.",
-    change: 0.27,
-    price: 1.8,
-    changesPercentage: 17.6471,
-  },
-
-  {
-    symbol: "PIK",
-    name: "Kidpik Corp.",
-    change: 0.27,
-    price: 1.8,
-    changesPercentage: 17.6471,
-  },
-
-  {
-    symbol: "PIK",
-    name: "Kidpik Corp.",
-    change: 0.27,
-    price: 1.8,
-    changesPercentage: 17.6471,
-  },
-
-  {
-    symbol: "PIK",
-    name: "Kidpik Corp.",
-    change: 0.27,
-    price: 1.8,
-    changesPercentage: 17.6471,
-  },
-
-  {
-    symbol: "PIK",
-    name: "Kidpik Corp.",
-    change: 0.27,
-    price: 1.8,
-    changesPercentage: 17.6471,
-  },
-
-  {
-    symbol: "PIK",
-    name: "Kidpik Corp.",
-    change: 0.27,
-    price: 1.8,
-    changesPercentage: 17.6471,
-  },
-
-  {
-    symbol: "PIK",
-    name: "Kidpik Corp.",
-    change: 0.27,
-    price: 1.8,
-    changesPercentage: 17.6471,
-  },
-
-  {
-    symbol: "PIK",
-    name: "Kidpik Corp.",
-    change: 0.27,
-    price: 1.8,
-    changesPercentage: 17.6471,
-  },
-
-  {
-    symbol: "PIK",
-    name: "Kidpik Corp.",
-    change: 0.27,
-    price: 1.8,
-    changesPercentage: 17.6471,
-  },
-];
 
 export const TopGainers = memo(() => {
-  const [gainers, setGainers] = useState<Gainer[]>([]);
+  const gainers = useSelector(getGainersList)
+  const isLoading = useSelector(getGainersLoading)
+  const error = useSelector(getGainersError)
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    dispatch(fetchingGainers())
+  }, [dispatch])
+
+  if(isLoading){
+    return (
+      <ContentBox className={styles.loadingBox}>
+      <Text title="Top Gainers" bordered align="center" size={18}/>
+        <Preloader />
+      </ContentBox>
+    )
+  }
+
+  if(error){
+    return (
+      <ContentBox className={styles.loadingBox}>
+      <Text title="Top Gainers" bordered align="center" size={18}/>
+      <Text title={error} align="center" size={18} marginTop={150}/>
+      </ContentBox>
+    )
+  }
 
   return (
     <ContentBox className={styles.gainers}>
@@ -100,7 +50,7 @@ export const TopGainers = memo(() => {
         align="center"
         size={18}
       />
-      <TopsTable topData={testGainers} sentiment="positive" />
+      <TopsTable topData={gainers.slice(0, 10)} sentiment="positive" />
     </ContentBox>
   );
 });

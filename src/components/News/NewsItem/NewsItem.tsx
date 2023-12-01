@@ -40,7 +40,7 @@ export const NewsItem = memo(({ globalNews, sentimentNews }: NewsItemProps) => {
             <NewsLink to={sentimentNews.url} className={styles.newsSource}>
               Source: {sentimentNews.site}
             </NewsLink>
-            <span className={styles.tickerWrapper}>Tickers: <Link to={`/company/${sentimentNews.symbol}`} className={styles.ticker}>{sentimentNews.symbol}</Link></span>
+            <span className={styles.tickerWrapper}>Ticker: <Link to={`/company/${sentimentNews.symbol}`} className={styles.ticker}>{sentimentNews.symbol}</Link></span>
             <span className={styles.sentimentWrapper}>Sentiment: <span className={cn(styles.sentiment, {
               [styles.negative]: sentimentNews.sentiment === 'Negative',
               [styles.positive]: sentimentNews.sentiment === 'Positive',
