@@ -15,7 +15,7 @@ if (!root) {
 
 const container = createRoot(root);
 container.render(
-  <BrowserRouter>
+  <BrowserRouter basename="/">
     <Provider store={store}>
       <Suspense fallback={'Loading...'}>
         <App />
