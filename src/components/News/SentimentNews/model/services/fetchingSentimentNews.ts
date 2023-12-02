@@ -9,7 +9,7 @@ export const fetchingSentimentNews = createAsyncThunk(
     
 
     try {
-      const response = await fetch(`https://financialmodelingprep.com/api/v4/stock-news-sentiments-rss-feed?page=0&apikey=04b10667f5be090522dc21fe9e833341`)
+      const response = await fetch(`https://financialmodelingprep.com/api/v4/stock-news-sentiments-rss-feed?page=0&apikey=${key}`)
 
       if(!response.ok){
         throw new Error('Sentiment News not Found')

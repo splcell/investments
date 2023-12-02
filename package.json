@@ -3,7 +3,7 @@
   "homepage": "https://splcell.github.io/investments",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.tsx",
   "scripts": {
     "start": "webpack serve --env port=3000 mode=development",
     "dev": "webpack --env mode=development",
