@@ -1,4 +1,4 @@
-import path from "path";
+import path, { dirname } from "path";
 import HTMLWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import webpack from "webpack";
@@ -27,10 +27,11 @@ export function buildPlugins({
     new webpack.DefinePlugin({
       __IS_DEV__: JSON.stringify(isDev),
       __PROJECT__: JSON.stringify(project),
-     
     }),
 
-    new Dotenv()
+    new Dotenv({
+      path: path.join(__dirname, '../../.env.local')
+    })
   ]
 
   

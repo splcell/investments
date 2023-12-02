@@ -5,9 +5,9 @@
   "description": "",
   "main": "index.tsx",
   "scripts": {
-    "start": "webpack serve --env port=3000 mode=development",
+    "start": "webpack serve --env port=3000 mode=development .env.local",
     "dev": "webpack --env mode=development",
-    "build": "webpack --env mode=production",
+    "build": "webpack --env mode=production .env.local",
     "test": "jest --config ./config/jest/jest.config.ts",
     "deploy": "gh-pages -d build"
   },

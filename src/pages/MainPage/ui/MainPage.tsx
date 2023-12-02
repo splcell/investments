@@ -3,10 +3,10 @@ import styles from "./MainPage.module.scss";
 import { GlobalNewsComponent, SentimentNewsComponent } from "components/News";
 import { MostActive, Performance, TopGainers, TopIndexes, TopLoosers } from "components/Tops";
 
-export const key = process.env.API_KEY
+
 
 const MainPage = memo(() => {
-  console.log(key)
+
   return (
     <div className="big-container">
       <div className={styles.inner}>

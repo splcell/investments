@@ -1,12 +1,13 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { key } from "pages/MainPage/ui/MainPage";
+import { apiKey } from "App";
+
 
 export const fetchingGainers = createAsyncThunk(
   "topGainers/fetchingGainers",
   async (_, thunkApi) => {
     try {
       const response = await fetch(
-        `https://financialmodelingprep.com/api/v3/stock_market/gainers?apikey=${key}`
+        `https://financialmodelingprep.com/api/v3/stock_market/gainers?apikey=${apiKey}`
       );
 
       if (!response.ok) {

@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { SentimentNewsSchema } from "../types/sentimentNews";
+import { apiKey} from "App";
 
-const key = process.env.API_KEY
 
 export const fetchingSentimentNews = createAsyncThunk(
   'sentimentNews/fetchingSentimentNews',
@@ -9,7 +9,7 @@ export const fetchingSentimentNews = createAsyncThunk(
     
 
     try {
-      const response = await fetch(`https://financialmodelingprep.com/api/v4/stock-news-sentiments-rss-feed?page=0&apikey=${key}`)
+      const response = await fetch(`https://financialmodelingprep.com/api/v4/stock-news-sentiments-rss-feed?page=0&apikey=${apiKey}`)
 
       if(!response.ok){
         throw new Error('Sentiment News not Found')
