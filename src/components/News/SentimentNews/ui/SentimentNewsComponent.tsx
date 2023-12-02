@@ -13,6 +13,7 @@ import { fetchingSentimentNews } from "../model/services/fetchingSentimentNews";
 import { useAppDispatch } from "hooks/hooks";
 import { NewsItem } from "components/News/NewsItem/NewsItem";
 import { useSelector } from "react-redux/es/hooks/useSelector";
+import { CheckDataStatus } from "components/CheckTopStatus/ui/CheckDataStatus";
 
 
 
@@ -27,28 +28,19 @@ export const SentimentNewsComponent = memo(() => {
   }, [dispatch])
   
 
-  if (isLoading) {
-    return (
-      <ContentBox>
-        <Text title="Sentiment News" className={styles.sentimentTitle} />
-        <Text title="Loading..." align="center"/>
-      </ContentBox>
-    );
-  }
-
-  if(error){
-    return (
-      <ContentBox>
-        <Text title="Sentiment News" className={styles.sentimentTitle} />
-        <Text title="News not Found" align="center"/>
-      </ContentBox>
-    )
-  }
-
-  console.log(sentimentNews)
+  
 
   return (
-    <ContentBox>
+    <>
+      <CheckDataStatus
+        isLoading={isLoading}
+        error={error}
+        title="Global News"
+        boxWidth={860}
+        boxHeight={370}
+        align="left"
+      />
+      <ContentBox>
       <Text title="Sentiment News" className={styles.sentimentTitle} bordered/>
       <ul className={styles.sentimentsList}>
         {sentimentNews.slice(0, 10).map((news) => (
@@ -56,5 +48,7 @@ export const SentimentNewsComponent = memo(() => {
         ))}
       </ul>
     </ContentBox>
+    </>
+    
   );
 });

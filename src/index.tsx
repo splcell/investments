@@ -13,9 +13,10 @@ if (!root) {
   throw new Error("root not found");
 }
 
+
 const container = createRoot(root);
 container.render(
-  <BrowserRouter basename="/">
+  <BrowserRouter basename={'/'}>
     <Provider store={store}>
       <Suspense fallback={'Loading...'}>
         <App />

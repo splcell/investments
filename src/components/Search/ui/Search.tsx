@@ -4,8 +4,10 @@ import Autosuggest from "react-autosuggest";
 import { FormEvent } from "react";
 import { Link } from "react-router-dom";
 import { SearchLink } from "components/Links";
+import { ContentBox } from "components/ContentBox";
+import { SearchTable } from "Tables/SearchTable";
 
-interface SearchData {
+export interface SearchData {
   symbol: string;
   name: string;
   currency: string;
@@ -59,24 +61,9 @@ export const Search = memo(() => {
   const resultsRender = useMemo(() => {
     if (searchResults.length > 0) {
       return (
-        <ul className={styles.resultsList}>
-          {searchResults.map((result) => (
-            <SearchLink
-              key={result.symbol}
-              to={`/company/${result.symbol}`}
-              onClick={clearResults}
-            >
-              <span className={styles.ticker}>{result.symbol}</span>
-              <span className={styles.name}>
-                {result.name.slice(0, 30) + "..."}
-              </span>
-              <span className={styles.exchange}>
-                {result.exchangeShortName}
-              </span>
-              <span className={styles.currency}>{result.currency}</span>
-            </SearchLink>
-          ))}
-        </ul>
+        <ContentBox className={styles.searchBox}>
+          <SearchTable results={searchResults} onClick={clearResults}/>
+        </ContentBox>
       );
     }
 

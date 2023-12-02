@@ -1,16 +1,19 @@
 import { AppRouter } from "components/AppRouter/ui/AppRouter";
 import { Button } from "components/Button/Button";
 import { ContentBox } from "components/ContentBox";
+import { Footer } from "components/Footer";
 import { Header } from "components/Header";
-const key = process.env.REACT_APP_API_KEY
 
-export const apiKey = '0' + key
+export const apiKey = process.env.REACT_APP_API_KEY;
 
 const App = () => {
   return (
     <>
       <Header />
-      <AppRouter />
+      <main>
+        <AppRouter />
+      </main>
+      <Footer />
     </>
   );
 };

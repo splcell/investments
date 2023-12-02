@@ -1,12 +1,12 @@
-import { ReactNode } from "react";
+import { HTMLAttributes, ReactNode } from "react";
 import styles from "./ContentBox.module.scss";
 import cn from "classnames";
 
-interface ContentBoxProps {
+interface ContentBoxProps extends HTMLAttributes<HTMLDivElement> {
   className?: string;
   children: ReactNode;
 }
 
-export const ContentBox = ({ children, className }: ContentBoxProps) => {
-  return <div className={cn(styles.contentBox, className)}>{children}</div>;
+export const ContentBox = ({ children, className, ...props }: ContentBoxProps) => {
+  return <div className={cn(styles.contentBox, className)} {...props}>{children}</div>;
 };

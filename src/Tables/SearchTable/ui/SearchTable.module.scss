@@ -1,0 +1,30 @@
+.searchTable {
+  width: 570px;
+  & thead {
+    background: var(--light-grey);
+
+    & th {
+      padding: 0 10px;
+      font-weight: 500;
+    }
+  }
+}
+
+.searchTableRow {
+  border-bottom: 1px solid var(--grey-color);
+  transition: 0.3s all;
+  font-size: 15px;
+  font-weight: 500;
+
+  & td {
+    padding: 5px 10px; 
+  }
+
+  &:hover {
+    background: var(--second-color);
+  }
+}
+
+.currency{
+  text-align: center;
+}
