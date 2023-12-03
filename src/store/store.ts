@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { GlobalNewsReducer } from "components/News/GlobalNews/model/slice/globalNewsSlice";
 import { SentimentNewsReducer } from "components/News/SentimentNews/model/slice/sentimentNewsSlice";
+import { SearchReducer } from "components/Search";
 import { MostActiveReducer } from "components/Tops/MostActive";
 import { PerformanceReducer } from "components/Tops/Performance";
 import { TopGainersReducer } from "components/Tops/TopGainers";
@@ -16,7 +17,8 @@ export const store = configureStore({
     gainers: TopGainersReducer,
     loosers: TopLoosersReducer,
     indexes: TopIndexesReducer,
-    performance: PerformanceReducer
+    performance: PerformanceReducer,
+    search: SearchReducer
   }
 })
 

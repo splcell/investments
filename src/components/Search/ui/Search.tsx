@@ -1,68 +1,57 @@
-import { memo, useCallback, useEffect, useMemo, useState } from "react";
+import { memo, useCallback, useEffect, useMemo } from "react";
 import styles from "./Search.module.scss";
-import Autosuggest from "react-autosuggest";
-import { FormEvent } from "react";
-import { Link } from "react-router-dom";
-import { SearchLink } from "components/Links";
 import { ContentBox } from "components/ContentBox";
 import { SearchTable } from "Tables/SearchTable";
-
-export interface SearchData {
-  symbol: string;
-  name: string;
-  currency: string;
-  stockExchange: string;
-  exchangeShortName: string;
-}
+import { useSelector } from "react-redux";
+import {
+  getSearchQuery,
+  getSearchResults,
+} from "../model/selectors/searchSelectors";
+import { useAppDispatch } from "hooks/hooks";
+import { SearchActions } from "../model/slice/searchSlice";
+import { fetchingSearchResults } from "../model/services/fetchingSearchResults";
+import { SeeAllLink } from "components/Links";
 
 export const Search = memo(() => {
-  const [search, setSearch] = useState("");
-  const [searchResults, setSearchResults] = useState<SearchData[]>([]);
+  const searchResults = useSelector(getSearchResults);
+  const query = useSelector(getSearchQuery);
+  const dispatch = useAppDispatch();
 
-  async function getSearchData(search: string) {
-    return await fetch(
-      `https://financialmodelingprep.com/api/v3/search?query=${search.toLowerCase()}&limit=10&exchange=NASDAQ,NYSE&apikey=04b10667f5be090522dc21fe9e833341`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        if (data) {
-          // const result = data.filter(
-          //   (item: Searchdata) =>
-          //     item.symbol.includes(search) || item.name.includes(search)
-          // );
-
-          setSearchResults(data);
-        }
-        // return [];
-      });
-  }
-
-  const onChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearch(e.target.value);
-  };
+  const onChangeSearch = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      dispatch(SearchActions.setQuery(e.target.value));
+    },
+    [dispatch]
+  );
 
   const clearResults = useCallback(() => {
-    setSearchResults([]);
-    setSearch("");
-  }, []);
+    dispatch(SearchActions.cleanQuery());
+    dispatch(SearchActions.cleanResults());
+  }, [dispatch]);
 
   useEffect(() => {
-    if (search.trim() !== "") {
-      getSearchData(search);
+    if (query.trim() !== "") {
+      dispatch(fetchingSearchResults(query));
+      localStorage.setItem('query', query)
     }
 
-    if (search.trim() === "") {
-      setSearchResults([]);
-      setSearch("");
+    if (query.trim() === "") {
+      dispatch(SearchActions.cleanQuery());
+      dispatch(SearchActions.cleanResults());
     }
-  }, [search]);
+  }, [query]);
 
   const resultsRender = useMemo(() => {
     if (searchResults.length > 0) {
       return (
         <ContentBox className={styles.searchBox}>
-          <SearchTable results={searchResults} onClick={clearResults}/>
+          <SearchTable
+            results={searchResults.slice(0, 10)}
+            onClick={clearResults}
+          />
+          {searchResults.length > 10 && (
+            <SeeAllLink path={`/search`} marginTop={10}>See All Results</SeeAllLink>
+          )}
         </ContentBox>
       );
     }
@@ -70,15 +59,18 @@ export const Search = memo(() => {
     return null;
   }, [searchResults]);
 
+
+
   return (
     <label className={styles.resultsWrapper} htmlFor="search">
       <input
         type="search"
-        value={search}
+        value={query}
         onChange={onChangeSearch}
         className={styles.input}
         placeholder="Search company ticker or name"
         id="search"
+        autoComplete="off"
       />
       {resultsRender}
     </label>

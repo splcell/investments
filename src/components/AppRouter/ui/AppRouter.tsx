@@ -1,6 +1,7 @@
 import { CompanyPage } from 'pages/CompanyPage';
 import { MainPage } from 'pages/MainPage';
 import { NotFoundPage } from 'pages/NotFoundPage';
+import { SearchPage } from 'pages/SearchPage';
 import {ReactElement} from 'react';
 import {Routes, Route} from 'react-router-dom';
 
@@ -18,6 +19,11 @@ const paths: Path[] = [
   {
     path: '/company/:ticker',
     element: <CompanyPage />
+  },
+
+  {
+    path: '/search',
+    element: <SearchPage />
   },
 
   {
