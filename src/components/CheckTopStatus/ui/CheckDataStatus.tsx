@@ -10,7 +10,7 @@ interface CheckDataStatusProps {
   title: string;
   boxWidth?: number;
   boxHeight?: number;
-  align?: 'left' | 'center' | 'right'
+  align?: 'left' | 'center'
 }
 
 export const CheckDataStatus = memo(

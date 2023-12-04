@@ -7,7 +7,7 @@ interface TextProps{
   title?: string,
   text?: string,
   bordered?: boolean,
-  align?: 'left' | 'center' | 'right',
+  align?: 'left' | 'center',
   size?: number
   marginTop?: number
 }

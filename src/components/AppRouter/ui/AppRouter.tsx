@@ -22,7 +22,7 @@ const paths: Path[] = [
   },
 
   {
-    path: '/search',
+    path: '/search/',
     element: <SearchPage />
   },
 

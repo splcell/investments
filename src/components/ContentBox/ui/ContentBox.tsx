@@ -1,6 +1,7 @@
 import { HTMLAttributes, ReactNode } from "react";
 import styles from "./ContentBox.module.scss";
 import cn from "classnames";
+// import React from "react";
 
 interface ContentBoxProps extends HTMLAttributes<HTMLDivElement> {
   className?: string;
