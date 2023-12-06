@@ -22,7 +22,7 @@ export const CheckDataStatus = memo(
       return (
         <ContentBox className={styles.loadingBox} style={boxSize}>
           <Text title={title} bordered align={align ? align : 'center'} size={18} />
-          <Preloader />
+          <Preloader data-testid='preloader'/>
         </ContentBox>
       );
     }

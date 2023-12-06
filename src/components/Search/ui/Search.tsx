@@ -60,7 +60,6 @@ export const Search = memo(() => {
   }, [searchResults]);
 
 
-
   return (
     <label className={styles.resultsWrapper} htmlFor="search">
       <input

@@ -28,7 +28,7 @@ export const SentimentNewsComponent = memo(() => {
   }, [dispatch])
   
 
-  console.log(sentimentNews)
+  
 
   return (
     <>

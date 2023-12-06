@@ -18,7 +18,7 @@ const container = createRoot(root);
 container.render(
   <BrowserRouter basename={__IS_DEV__ ? '/' : '/investments'}>
     <Provider store={store}>
-      <Suspense fallback={'Loading...'}>
+      <Suspense fallback={''}>
         <App />
       </Suspense>
     </Provider>
