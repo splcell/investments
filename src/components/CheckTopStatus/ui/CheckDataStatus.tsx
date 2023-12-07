@@ -5,8 +5,8 @@ import { Text } from "components/Text";
 import { Preloader } from "components/Preloader";
 
 interface CheckDataStatusProps {
-  isLoading: boolean;
-  error: string | undefined;
+  isLoading?: boolean;
+  error?: string | undefined;
   title: string;
   boxWidth?: number;
   boxHeight?: number;

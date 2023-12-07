@@ -16,8 +16,8 @@ export const fetchingSearchResults = createAsyncThunk(
       return data
 
 
-    } catch (error) {
-      thunkApi.rejectWithValue(error)
+    } catch (error: Error | any) {
+      return thunkApi.rejectWithValue(error.message)
     }
   }
 )

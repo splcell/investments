@@ -26,17 +26,27 @@ export const GlobalNewsComponent = memo(() => {
     dispatch(fetchingGlobalNews());
   }, [dispatch]);
 
-
-  return (
-    <>
+  if(isLoading){
+    return (
       <CheckDataStatus
         isLoading={isLoading}
-        error={error}
         title="Global News"
         boxWidth={860}
         boxHeight={370}
         align="left"
       />
+    )
+  }
+
+
+  return (
+    <>
+      {error && <CheckDataStatus
+        error={error}
+        title="Global News"
+        boxWidth={860}
+        boxHeight={370}
+      />}
       <ContentBox>
         <Text title={"Global News"} className={styles.newsTitle} bordered />
         <ul className={styles.newsList}>
