@@ -38,9 +38,10 @@ describe('Sentiment news component test', () => {
 
     await waitFor(() => {
       expect(screen.queryByText("Loading...")).toBeNull();
+      expect(screen.getByText(/Published:/i)).toBeInTheDocument()
     });
     
-    expect(screen.getByText(/Published:/i)).toBeInTheDocument()
+    
   })
 
   test('Sentiment news list loading', async() => {

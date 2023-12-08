@@ -12,6 +12,7 @@ import { useAppDispatch } from "hooks/hooks";
 import { NewsItem } from "components/News/NewsItem/NewsItem";
 import { useSelector } from "react-redux";
 import { CheckDataStatus } from "components/CheckTopStatus/ui/CheckDataStatus";
+import { CheckDataHoc } from "components/CheckTopStatus/CheckDataHoc";
 
 export const SentimentNewsComponent = memo(() => {
   const sentimentNews = useSelector(getSentimentNews);
@@ -23,30 +24,9 @@ export const SentimentNewsComponent = memo(() => {
     dispatch(fetchingSentimentNews());
   }, [dispatch]);
 
-  if (isLoading) {
-    return (
-      <CheckDataStatus
-        isLoading={isLoading}
-        title="Sentiment News"
-        boxWidth={860}
-        boxHeight={370}
-        align="left"
-      />
-    );
-  }
-
-  console.log(isLoading);
 
   return (
-    <>
-      {error && (
-        <CheckDataStatus
-          error={error}
-          title="Sentiment News"
-          boxWidth={860}
-          boxHeight={370}
-        />
-      )}
+    <CheckDataHoc isLoading={isLoading} error={error} title="Sentiment News" boxWidth={860} boxHeight={370}>
       <ContentBox>
         <Text
           title="Sentiment News"
@@ -59,6 +39,6 @@ export const SentimentNewsComponent = memo(() => {
           ))}
         </ul>
       </ContentBox>
-    </>
+    </CheckDataHoc>
   );
 });

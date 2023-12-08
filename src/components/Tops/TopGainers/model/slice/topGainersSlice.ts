@@ -16,7 +16,7 @@ const topGainersSlice = createSlice({
   extraReducers: (build) => {
     build
       .addCase(fetchingGainers.pending, (state) => {
-        state.isLoading = false;
+        state.isLoading = true;
         state.error = undefined;
       })
 

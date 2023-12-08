@@ -30,8 +30,8 @@ export const CheckDataStatus = memo(
     if (error) {
       return (
         <ContentBox className={styles.loadingBox} style={boxSize}>
-          <Text title={title} bordered align={align} size={18} />
-          <Text title={error} align={align ? align : 'center'} size={18} marginTop={150} />
+          <Text title={title} bordered align={align ? align : 'left'} size={18} />
+          <Text title={error} align={error ? 'center' : align} size={18} marginTop={150} />
         </ContentBox>
       );
     }

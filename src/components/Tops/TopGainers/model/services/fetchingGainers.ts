@@ -17,8 +17,8 @@ export const fetchingGainers = createAsyncThunk(
       const data = await response.json();
 
       return data;
-    } catch (error) {
-      thunkApi.rejectWithValue(error);
+    } catch (error: Error | any) {
+      return thunkApi.rejectWithValue(error.message);
     }
   }
 );

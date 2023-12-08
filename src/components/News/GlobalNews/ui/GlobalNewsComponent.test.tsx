@@ -117,9 +117,9 @@ describe('GlobalNews component test', () => {
 
     await waitFor(() => {
       expect(screen.queryByText("Loading...")).toBeNull();
+      expect(screen.getByText(/Published:/i)).toBeInTheDocument()
     });
-
-    expect(screen.getByText(/Published:/i)).toBeInTheDocument()
+   
   })
 
   test('Global news list loading', async() => {

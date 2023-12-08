@@ -1,9 +1,7 @@
 import { ContentBox } from "components/ContentBox";
 import { Text } from "components/Text";
-import { memo, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { memo, useEffect } from "react";
 import styles from "./TopGainers.module.scss";
-import Table from "react-bootstrap/Table";
 import { TopsTable } from "components/Tops/TopsTable/ui/TopsTable";
 import { useSelector } from "react-redux";
 import {
@@ -13,7 +11,7 @@ import {
 } from "../model/selectors/topGainersSelectors";
 import { useAppDispatch } from "hooks/hooks";
 import { fetchingGainers } from "../model/services/fetchingGainers";
-import { CheckDataStatus } from "components/CheckTopStatus/ui/CheckDataStatus";
+import { CheckDataHoc } from "components/CheckTopStatus/CheckDataHoc";
 
 export const TopGainers = memo(() => {
   const gainers = useSelector(getGainersList);
@@ -26,18 +24,18 @@ export const TopGainers = memo(() => {
   }, [dispatch]);
 
   return (
-    <>
-      <CheckDataStatus
-        error={error}
-        isLoading={isLoading}
-        title="Top Gainers"
-        boxWidth={330}
-        boxHeight={391}
-      />
+    <CheckDataHoc
+      isLoading={isLoading}
+      error={error}
+      title="Top Gainers"
+      align="center"
+      boxWidth={330}
+      boxHeight={391}
+    >
       <ContentBox className={styles.gainers}>
         <Text title="Top Gainers" bordered align="center" size={18} />
         <TopsTable topData={gainers.slice(0, 10)} sentiment="positive" />
       </ContentBox>
-    </>
+    </CheckDataHoc>
   );
 });

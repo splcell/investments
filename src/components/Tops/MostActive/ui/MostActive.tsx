@@ -11,6 +11,7 @@ import {
   getMostActiveTickers,
 } from "../model/selectors/mostActiveSelectors";
 import { CheckDataStatus } from "components/CheckTopStatus/ui/CheckDataStatus";
+import { CheckDataHoc } from "components/CheckTopStatus/CheckDataHoc";
 
 export const MostActive = memo(() => {
   const tickers = useSelector(getMostActiveTickers);
@@ -23,18 +24,11 @@ export const MostActive = memo(() => {
   }, [dispatch]);
 
   return (
-    <>
-      <CheckDataStatus
-        isLoading={isLoading}
-        error={error}
-        title="Most Active"
-        boxWidth={330}
-        boxHeight={391}
-      />
+    <CheckDataHoc isLoading={isLoading} error={error} title="Most Active" align="center" boxWidth={330} boxHeight={391}>
       <ContentBox>
         <Text title="Most Active" bordered align="center" size={18} />
         <TopsTable topData={tickers.slice(0, 10)} />
       </ContentBox>
-    </>
+    </CheckDataHoc>
   );
 });

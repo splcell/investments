@@ -10,8 +10,7 @@ import {
 } from "../model/selectors/performanceSelectors";
 import { useAppDispatch } from "hooks/hooks";
 import { fetchingSectorsPerformance } from "../model/services/fetchingSectorsPerformance";
-import { CheckDataStatus } from "components/CheckTopStatus/ui/CheckDataStatus";
-import { SectorPerformance } from "components/Tops/model/types/tops";
+import { CheckDataHoc } from "components/CheckTopStatus/CheckDataHoc";
 
 export const Performance = memo(() => {
   const sectors = useSelector(getPerfomanceSectors);
@@ -23,19 +22,13 @@ export const Performance = memo(() => {
     dispatch(fetchingSectorsPerformance());
   }, [dispatch]);
 
+  
   return (
-    <>
-      <CheckDataStatus
-        error={error}
-        isLoading={isLoading}
-        title="Top Gainers"
-        boxWidth={330}
-        boxHeight={391}
-      />
+    <CheckDataHoc isLoading={isLoading} error={error} title="Sector Performance" align="center" boxWidth={330} boxHeight={391}>
       <ContentBox>
         <Text title="Sector Performance" bordered align="center" size={18} />
         <TopsTable sectorPerformance={sectors} />
       </ContentBox>
-    </>
+    </CheckDataHoc>
   );
 });

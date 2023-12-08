@@ -67,7 +67,7 @@ export const Search = memo(() => {
         value={query}
         onChange={onChangeSearch}
         className={styles.input}
-        placeholder="Search company ticker or name"
+        placeholder="Search company ticker or name (Example: AAPL)"
         id="search"
         autoComplete="off"
       />
