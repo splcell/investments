@@ -1,0 +1,48 @@
+.infoInner{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 50px;
+}
+
+.logo{
+  width: 200px;
+  height: 200px;
+}
+
+.name{
+  max-width: 600px;
+  font-size: 35px;
+  font-weight: 500;
+}
+
+.priceInfo{
+  display: flex;
+}
+
+.price{
+  font-size: 28px;
+  font-weight: 500;
+  margin: 0 10px 0 -20px;
+}
+
+.changes{
+  font-weight: 500;
+  font-size: 21px;
+}
+
+.positive{
+  color: var(--positive-color)
+}
+
+.negative{
+  color: var(--negative-color)
+}
+
+.loadingBox {
+  div {
+    display: block;
+    margin: 0 auto;
+    margin-top: 70px;
+  }
+}

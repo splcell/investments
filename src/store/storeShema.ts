@@ -1,3 +1,4 @@
+import { CompanyInfoSchema } from "components/CompanyInfo";
 import { GlobalNewsSchema } from "components/News";
 import { SentimentNewsSchema } from "components/News/SentimentNews/model/types/sentimentNews";
 import { SearchSchema } from "components/Search";
@@ -15,5 +16,6 @@ export interface StoreSchema {
   loosers: TopLooserSchema;
   indexes: TopIndexesSchema;
   performance: PerformanceSchema;
-  search: SearchSchema
+  search: SearchSchema;
+  companyInfo: CompanyInfoSchema;
 }

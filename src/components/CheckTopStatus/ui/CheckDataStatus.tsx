@@ -11,16 +11,17 @@ interface CheckDataStatusProps {
   boxWidth?: number;
   boxHeight?: number;
   align?: 'left' | 'center'
+  className?: string
 }
 
 export const CheckDataStatus = memo(
-  ({ isLoading, error, title, boxWidth, boxHeight, align }: CheckDataStatusProps) => {
+  ({ isLoading, error, title, boxWidth, boxHeight, align, className }: CheckDataStatusProps) => {
     const boxSize = {width: `${boxWidth}px`, height: `${boxHeight}px`}
 
 
     if (isLoading) {
       return (
-        <ContentBox className={styles.loadingBox} style={boxSize}>
+        <ContentBox className={className ? className : styles.loadingBox} style={boxSize}>
           <Text title={title} bordered align={align ? align : 'center'} size={18} />
           <Preloader data-testid='preloader'/>
         </ContentBox>
@@ -29,7 +30,7 @@ export const CheckDataStatus = memo(
 
     if (error) {
       return (
-        <ContentBox className={styles.loadingBox} style={boxSize}>
+        <ContentBox className={className ? className : styles.loadingBox} style={boxSize}>
           <Text title={title} bordered align={align ? align : 'left'} size={18} />
           <Text title={error} align={error ? 'center' : align} size={18} marginTop={150} />
         </ContentBox>

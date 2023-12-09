@@ -5,13 +5,14 @@ interface CheckDataHocProps{
   children: ReactNode,
   isLoading: boolean,
   error?: string,
-  title: string,
+  title?: string,
   align?: 'left' | 'center'
   boxWidth?: number
-  boxHeight?: number
+  boxHeight?: number,
+  className?: string
 }
 
-export const CheckDataHoc = ({children, isLoading, error, title, align='left', boxWidth, boxHeight}: CheckDataHocProps) => {
+export const CheckDataHoc = ({children, isLoading, error, title='', align='left', boxWidth, boxHeight, className}: CheckDataHocProps) => {
 
   if(isLoading){
     return(
@@ -21,6 +22,7 @@ export const CheckDataHoc = ({children, isLoading, error, title, align='left', b
         boxWidth={boxWidth}
         boxHeight={boxHeight}
         align={align}
+        className={className}
       />
     )
   }
