@@ -5,7 +5,8 @@ import { ContentBox } from "components/ContentBox";
 import 'react-tabs/style/react-tabs.scss';
 import { useParams, useSearchParams } from "react-router-dom";
 import { useAppDispatch } from "hooks/hooks";
-import {Info, fetchingCompanyInfo } from "components/CompanyInfo";
+import {CompanyChart, Info, Overview, fetchingCompanyInfo } from "components/CompanyInfo";
+import { MinMax } from "components/CompanyInfo/MinMax/ui/MinMax";
 
 const CompanyPage = memo(() => {
   const {ticker} = useParams<{ticker: string}>()
@@ -28,13 +29,16 @@ const CompanyPage = memo(() => {
         <Tabs>
           <TabList>
             <Tab>Profile</Tab>
-            <Tab onClick={() => setSearchParams({tab: 'reports'})}>Reports</Tab>
+            <Tab>Reports</Tab>
             <Tab>Ratios</Tab>
             <Tab>Dividends</Tab>
             <Tab>Events</Tab>
           </TabList>
           <TabPanel>
             <Info/>
+            <CompanyChart />
+            <MinMax />
+            <Overview />
           </TabPanel>
           <TabPanel>
             <h2>Any content 2</h2>

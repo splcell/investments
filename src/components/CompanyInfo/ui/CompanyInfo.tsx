@@ -29,7 +29,7 @@ export const CompanyInfo = memo(() => {
           <span className={cn(styles.changes, {
             [styles.positive]: profile?.changes && profile.changes > 0,
             [styles.negative]: profile?.changes && profile.changes < 0
-          })}>{profile?.changes} ({profile?.changes && profile?.changes > 0 ? changePercent : 0} %)</span>
+          })}>{profile?.changes} ({profile?.changes && profile?.changes !== 0 ? changePercent : 0} %)</span>
         </div>
       </div>
     </ContentBox>

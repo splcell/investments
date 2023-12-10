@@ -1,0 +1,16 @@
+.overviewList{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px 20px;
+  justify-items: center;
+  margin-top: 30px;
+}
+
+.overviewItem{
+  display: flex;
+  width: 600px;
+  border-bottom: 1px solid var(--main-color);
+  font-weight: 500;
+  font-size: 17px;
+  justify-content: space-between;
+}

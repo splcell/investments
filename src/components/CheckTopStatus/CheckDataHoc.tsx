@@ -1,21 +1,31 @@
-import { ReactNode } from "react"
-import { CheckDataStatus } from "./ui/CheckDataStatus"
+import { ReactNode } from "react";
+import { CheckDataStatus } from "./ui/CheckDataStatus";
 
-interface CheckDataHocProps{
-  children: ReactNode,
-  isLoading: boolean,
-  error?: string,
-  title?: string,
-  align?: 'left' | 'center'
-  boxWidth?: number
-  boxHeight?: number,
-  className?: string
+interface CheckDataHocProps {
+  children: ReactNode;
+  isLoading: boolean;
+  error?: string;
+  title?: string;
+  align?: "left" | "center";
+  boxWidth?: number;
+  boxHeight?: number;
+  className?: string;
+  marginTop?: number;
 }
 
-export const CheckDataHoc = ({children, isLoading, error, title='', align='left', boxWidth, boxHeight, className}: CheckDataHocProps) => {
-
-  if(isLoading){
-    return(
+export const CheckDataHoc = ({
+  children,
+  isLoading,
+  error,
+  title = "",
+  align = "left",
+  boxWidth,
+  boxHeight,
+  className,
+  marginTop,
+}: CheckDataHocProps) => {
+  if (isLoading) {
+    return (
       <CheckDataStatus
         isLoading={isLoading}
         title={title}
@@ -24,10 +34,10 @@ export const CheckDataHoc = ({children, isLoading, error, title='', align='left'
         align={align}
         className={className}
       />
-    )
+    );
   }
 
-  if(error){
+  if (error) {
     return (
       <CheckDataStatus
         error={error}
@@ -35,14 +45,10 @@ export const CheckDataHoc = ({children, isLoading, error, title='', align='left'
         boxWidth={boxWidth}
         boxHeight={boxHeight}
         align={align}
+        marginTop={marginTop}
       />
-    )
+    );
   }
-  
-  
-  return(
-    <>
-      {children}
-    </>
-  )
-}
+
+  return <>{children}</>;
+};

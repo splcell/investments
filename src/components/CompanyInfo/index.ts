@@ -25,7 +25,12 @@ export {
   getAnnualReports,
   getQuarterlyReports,
   getCompanyStatus,
-  getCompanyError
-} from './model/selectors/companyInfoSelectors';
+  getCompanyError,
+} from "./model/selectors/companyInfoSelectors";
 
-export {CompanyInfo as Info} from './ui/CompanyInfo'
+export { CompanyInfo as Info } from "./ui/CompanyInfo";
+
+export type { ChartData } from "./CompanyChart/model/types/chartData";
+export { CompanyChart } from "./CompanyChart/ui/CompanyChart";
+export { MinMax } from "./MinMax/ui/MinMax";
+export { Overview } from "./Overview/ui/Overview";
