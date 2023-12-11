@@ -1,4 +1,4 @@
-.overviewList{
+.ratioslist {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 10px 20px;
@@ -6,7 +6,7 @@
   margin-top: 30px;
 }
 
-.overviewItem{
+.ratiosItem {
   display: flex;
   width: 600px;
   border-bottom: 1px solid var(--main-color);

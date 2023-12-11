@@ -13,6 +13,7 @@ interface CheckDataStatusProps {
   align?: "left" | "center";
   className?: string;
   marginTop?: number;
+  bordered?: boolean;
 }
 
 export const CheckDataStatus = memo(
@@ -24,7 +25,8 @@ export const CheckDataStatus = memo(
     boxHeight,
     align,
     className,
-    marginTop
+    marginTop,
+    bordered
   }: CheckDataStatusProps) => {
     const boxSize = { width: `${boxWidth}px`, height: `${boxHeight}px` };
 
@@ -36,7 +38,7 @@ export const CheckDataStatus = memo(
         >
           <Text
             title={title}
-            bordered
+            bordered={bordered}
             align={align ? align : "center"}
             size={18}
           />
@@ -53,7 +55,7 @@ export const CheckDataStatus = memo(
         >
           <Text
             title={title}
-            bordered
+            bordered={bordered}
             align={align ? align : "left"}
             size={18}
           />

@@ -11,6 +11,7 @@ interface CheckDataHocProps {
   boxHeight?: number;
   className?: string;
   marginTop?: number;
+  bordered?: boolean
 }
 
 export const CheckDataHoc = ({
@@ -23,6 +24,7 @@ export const CheckDataHoc = ({
   boxHeight,
   className,
   marginTop,
+  bordered,
 }: CheckDataHocProps) => {
   if (isLoading) {
     return (
@@ -33,6 +35,7 @@ export const CheckDataHoc = ({
         boxHeight={boxHeight}
         align={align}
         className={className}
+        bordered={bordered}
       />
     );
   }
@@ -46,6 +49,7 @@ export const CheckDataHoc = ({
         boxHeight={boxHeight}
         align={align}
         marginTop={marginTop}
+        bordered={bordered}
       />
     );
   }

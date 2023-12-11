@@ -7,6 +7,7 @@ import { useParams, useSearchParams } from "react-router-dom";
 import { useAppDispatch } from "hooks/hooks";
 import {CompanyChart, Info, Overview, fetchingCompanyInfo } from "components/CompanyInfo";
 import { MinMax } from "components/CompanyInfo/MinMax/ui/MinMax";
+import { KeyRatios } from "components/CompanyInfo/KeyRatios/ui/KeyRatios";
 
 const CompanyPage = memo(() => {
   const {ticker} = useParams<{ticker: string}>()
@@ -39,6 +40,7 @@ const CompanyPage = memo(() => {
             <CompanyChart />
             <MinMax />
             <Overview />
+            <KeyRatios />
           </TabPanel>
           <TabPanel>
             <h2>Any content 2</h2>
