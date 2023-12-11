@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkinvestments=self.webpackChunkinvestments||[]).push([[600],{326:(e,n,s)=>{s.r(n),s.d(n,{default:()=>u});var t=s(893);const u=(0,s(294).memo)((function(){return(0,t.jsx)("h2",{children:"Not Found page"})}))}}]);
