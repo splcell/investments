@@ -1,28 +1,28 @@
 import { memo, useEffect } from "react";
 import styles from "./CompanyPage.module.scss";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import { ContentBox } from "components/ContentBox";
 import 'react-tabs/style/react-tabs.scss';
-import { useParams, useSearchParams } from "react-router-dom";
+import { useLocation, useParams, useSearchParams } from "react-router-dom";
 import { useAppDispatch } from "hooks/hooks";
-import {CompanyChart, Info, Overview, fetchingCompanyInfo } from "components/CompanyInfo";
+import {CompanyChart, Description, Info, KeyRatios, Overview, fetchingCompanyInfo } from "components/CompanyInfo";
 import { MinMax } from "components/CompanyInfo/MinMax/ui/MinMax";
-import { KeyRatios } from "components/CompanyInfo/KeyRatios/ui/KeyRatios";
+import { CompanyNews } from "components/News";
+
 
 const CompanyPage = memo(() => {
   const {ticker} = useParams<{ticker: string}>()
   const [searchParams, setSearchParams] = useSearchParams()
   const dispatch = useAppDispatch()
 
+
   useEffect(() => {
+
     if(ticker){
       dispatch(fetchingCompanyInfo(ticker))
       setSearchParams({search: ticker})
     }
 
   }, [ticker, dispatch])
-
-  console.log(searchParams.values())
 
   return (
     <div data-testid="company-page" className={styles.companyWrapper}>
@@ -41,6 +41,8 @@ const CompanyPage = memo(() => {
             <MinMax />
             <Overview />
             <KeyRatios />
+            <Description />
+            <CompanyNews />
           </TabPanel>
           <TabPanel>
             <h2>Any content 2</h2>

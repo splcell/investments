@@ -59,6 +59,11 @@ export interface CompanyRating {
   date: string;
   rating: string;
   ratingRecommendation: string;
+  ratingDetailsDCFRecommendation: string;
+  ratingDetailsROERecommendation: string;
+  ratingDetailsROARecommendation: string;
+  ratingDetailsPERecommendation: string;
+  ratingDetailsPBRecommendation: string;
 }
 
 export interface CompanyReport {

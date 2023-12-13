@@ -2,6 +2,7 @@ import {
   getCompanyError,
   getCompanyStatus,
   getProfile,
+  getRating,
   getRatios,
 } from "components/CompanyInfo/model/selectors/companyInfoSelectors";
 import { RatiosTTM } from "components/CompanyInfo/model/types/companyInfo";
@@ -52,7 +53,7 @@ export const KeyRatios = memo(() => {
   return (
     <CheckDataHoc
       isLoading={isLoading}
-      error={'error'}
+      error={error}
       boxWidth={1400}
       boxHeight={212}
       className={styles.loadingBox}
@@ -60,6 +61,7 @@ export const KeyRatios = memo(() => {
       bordered={false}
       align="center"
       marginTop={70}
+      size={20}
     >
       <ContentBox>
         <Text title="Key Ratios (TTM)" align="center" />
@@ -71,6 +73,7 @@ export const KeyRatios = memo(() => {
             </li>
           ))}
         </ul>
+        
       </ContentBox>
     </CheckDataHoc>
   );

@@ -9,3 +9,4 @@ export type {
 export { GlobalNewsComponent } from "./GlobalNews/ui/GlobalNewsComponent";
 export { SentimentNewsComponent } from "./SentimentNews/ui/SentimentNewsComponent";
 export { NewsItem } from "./NewsItem/NewsItem";
+export {CompanyNews} from './CompanyNews/ui/CompanyNews'

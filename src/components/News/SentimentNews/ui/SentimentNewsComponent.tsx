@@ -20,6 +20,8 @@ export const SentimentNewsComponent = memo(() => {
   const error = useSelector(getSentimentNewsError);
   const dispatch = useAppDispatch();
 
+ 
+
   useEffect(() => {
     dispatch(fetchingSentimentNews());
   }, [dispatch]);

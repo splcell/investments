@@ -9,6 +9,7 @@ interface NewsLinkProps{
   to: string;
 }
 
+
 export const NewsLink = ({className, children, to}: NewsLinkProps) => {
   return (
     <Link to={to} className={cn(styles.newsLink, className)}>{children}</Link>

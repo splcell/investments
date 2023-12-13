@@ -14,6 +14,7 @@ interface CheckDataStatusProps {
   className?: string;
   marginTop?: number;
   bordered?: boolean;
+  size?: number;
 }
 
 export const CheckDataStatus = memo(
@@ -26,7 +27,8 @@ export const CheckDataStatus = memo(
     align,
     className,
     marginTop,
-    bordered
+    bordered,
+    size
   }: CheckDataStatusProps) => {
     const boxSize = { width: `${boxWidth}px`, height: `${boxHeight}px` };
 
@@ -40,7 +42,7 @@ export const CheckDataStatus = memo(
             title={title}
             bordered={bordered}
             align={align ? align : "center"}
-            size={18}
+            size={size ? size : 18}
           />
           <Preloader data-testid="preloader" />
         </ContentBox>
@@ -57,7 +59,7 @@ export const CheckDataStatus = memo(
             title={title}
             bordered={bordered}
             align={align ? align : "left"}
-            size={18}
+            size={size ? size : 18}
           />
           <Text
             title={error}

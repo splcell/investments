@@ -1,6 +1,6 @@
-import { memo } from "react";
+import { memo, useCallback } from "react";
 import styles from './SearchTable.module.scss'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { SearchData } from "components/Search";
 
 interface SearchTableProps {
@@ -10,6 +10,8 @@ interface SearchTableProps {
 }
 
 export const SearchTable = memo(({results, onClick, tableWidth}: SearchTableProps) => {
+  const navigate = useNavigate()
+
   return(
     <table className={styles.searchTable} style={{width: `${tableWidth}px`}}>
       <thead>
@@ -23,10 +25,10 @@ export const SearchTable = memo(({results, onClick, tableWidth}: SearchTableProp
       <tbody>
         {results.map(result => (
           <tr key={result.symbol} className={styles.searchTableRow} onClick={onClick}>
-            <td><Link to={`/company/${result.symbol}`}>{result.symbol}</Link></td>
-            <td><Link to={`/company/${result.symbol}`}>{result.name}</Link></td>
-            <td><Link to={`/company/${result.symbol}`}>{result.exchangeShortName}</Link></td>
-            <td className={styles.currency}><Link to={`/company/${result.symbol}`}>{result.currency}</Link></td>
+            <td onClick={() => navigate(`/company/${result.symbol}`)}>{result.symbol}</td>
+            <td onClick={() => navigate(`/company/${result.symbol}`)}>{result.name}</td>
+            <td onClick={() => navigate(`/company/${result.symbol}`)}>{result.exchangeShortName}</td>
+            <td className={styles.currency} onClick={() => navigate(`/company/${result.symbol}`)}>{result.currency}</td>
           </tr>
         ))}
       </tbody>
