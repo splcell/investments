@@ -2,7 +2,7 @@ import { memo, useEffect } from "react";
 import styles from "./CompanyPage.module.scss";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import 'react-tabs/style/react-tabs.scss';
-import { useLocation, useParams, useSearchParams } from "react-router-dom";
+import {useParams, useSearchParams } from "react-router-dom";
 import { useAppDispatch } from "hooks/hooks";
 import {CompanyChart, Description, Info, KeyRatios, Overview, fetchingCompanyInfo } from "components/CompanyInfo";
 import { MinMax } from "components/CompanyInfo/MinMax/ui/MinMax";

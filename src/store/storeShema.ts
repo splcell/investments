@@ -1,5 +1,5 @@
 import { CompanyInfoSchema } from "components/CompanyInfo";
-import { GlobalNewsSchema } from "components/News";
+import { CompanyNewsSchema, GlobalNewsSchema } from "components/News";
 import { SentimentNewsSchema } from "components/News/SentimentNews/model/types/sentimentNews";
 import { SearchSchema } from "components/Search";
 import { MostActiveSchema } from "components/Tops/MostActive";
@@ -18,4 +18,5 @@ export interface StoreSchema {
   performance: PerformanceSchema;
   search: SearchSchema;
   companyInfo: CompanyInfoSchema;
+  companyNews: CompanyNewsSchema;
 }
