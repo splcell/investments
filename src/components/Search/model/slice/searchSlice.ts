@@ -38,3 +38,4 @@ const searchSlice = createSlice({
 
 export const { reducer: SearchReducer } = searchSlice;
 export const { actions: SearchActions } = searchSlice;
+export type SearchActionsType = ReturnType<typeof searchSlice.actions[keyof typeof searchSlice.actions]>

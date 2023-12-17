@@ -17,7 +17,11 @@ const initialState: CompanyNewsSchema = {
 const companyNewsSlice = createSlice({
   name: 'companyNews',
   initialState,
-  reducers: {},
+  reducers: {
+    cleanPriceTargets: (state) => {
+      state.priceTargets = []
+    }
+  },
   extraReducers: (build) => {
     build
     .addCase(fetchingPressReleases.pending, (state) => {

@@ -11,11 +11,17 @@ import { useAppDispatch } from "hooks/hooks";
 import { SearchActions } from "../model/slice/searchSlice";
 import { fetchingSearchResults } from "../model/services/fetchingSearchResults";
 import { SeeAllLink } from "components/Links";
+import { useDebouncedCallback } from "use-debounce";
 
 export const Search = memo(() => {
   const searchResults = useSelector(getSearchResults);
   const query = useSelector(getSearchQuery);
   const dispatch = useAppDispatch();
+  const debounce = useDebouncedCallback((query) => {
+    if (query.trim() !== "") {
+      dispatch(fetchingSearchResults(query));
+    }
+  }, 500);
 
   const onChangeSearch = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -30,11 +36,8 @@ export const Search = memo(() => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (query.trim() !== "") {
-      dispatch(fetchingSearchResults(query));
-      localStorage.setItem('query', query)
-    }
-
+    debounce(query);
+    localStorage.setItem("query", query);
     if (query.trim() === "") {
       dispatch(SearchActions.cleanQuery());
       dispatch(SearchActions.cleanResults());
@@ -50,7 +53,9 @@ export const Search = memo(() => {
             onClick={clearResults}
           />
           {searchResults.length > 10 && (
-            <SeeAllLink path={`/search`} marginTop={10}>See All Results</SeeAllLink>
+            <SeeAllLink path={`/search`} marginTop={10}>
+              See All Results
+            </SeeAllLink>
           )}
         </ContentBox>
       );
@@ -59,19 +64,20 @@ export const Search = memo(() => {
     return null;
   }, [searchResults]);
 
-
   return (
-    <label className={styles.resultsWrapper} htmlFor="search">
-      <input
-        type="search"
-        value={query}
-        onChange={onChangeSearch}
-        className={styles.input}
-        placeholder="Search company ticker or name (Example: MSFT)"
-        id="search"
-        autoComplete="off"
-      />
-      {resultsRender}
-    </label>
+    <div className={styles.inputInner}>
+      <label className={styles.resultsWrapper} htmlFor="search">
+        <input
+          type="search"
+          value={query}
+          onChange={onChangeSearch}
+          className={styles.input}
+          placeholder="Search company ticker or name (Example: MSFT)"
+          id="search"
+          autoComplete="off"
+        />
+        {resultsRender}
+      </label>
+    </div>
   );
 });

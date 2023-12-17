@@ -1,5 +1,5 @@
 import { ContentBox } from "components/ContentBox";
-import { memo, useEffect } from "react";
+import { memo, useEffect, useMemo } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import styles from "./CompanyNews.module.scss";
 import { useSelector } from "react-redux";
@@ -26,9 +26,12 @@ import { fetchingPriceTargets } from "../model/services/fetchingPriceTargets";
 import { Text } from "components/Text";
 import { PressRelease } from "../model/types/pressRelease";
 import { PriceTarget } from "../model/types/priceTarget";
+import { CompanyNewsActions } from "../model/slice/companyNewsSlice";
+import { Preloader } from "components/Preloader";
+import { CheckDataHoc } from "components/CheckTopStatus/CheckDataHoc";
 
 export const CompanyNews = memo(() => {
-  const {ticker} = useParams<{ticker: string}>()
+  const { ticker } = useParams<{ ticker: string }>();
   const companyNews = useSelector(getCompanyNews);
   const companyNewsLoading = useSelector(getCompanyStatus);
   const companyNewsError = useSelector(getCompanyError);
@@ -41,13 +44,14 @@ export const CompanyNews = memo(() => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if(ticker){
-      dispatch(fetchingPressReleases(ticker))
-      dispatch(fetchingPriceTargets(ticker))
+    dispatch(CompanyNewsActions.cleanPriceTargets());
+    if (ticker) {
+      dispatch(fetchingPressReleases(ticker));
+      dispatch(fetchingPriceTargets(ticker));
     }
-  }, [dispatch, ticker])
+  }, [dispatch, ticker]);
 
-  console.log(pressReleases, priceTargets)
+  
 
   return (
     <ContentBox>
@@ -58,28 +62,48 @@ export const CompanyNews = memo(() => {
           <Tab>Price Targets</Tab>
         </TabList>
         <TabPanel>
+          <CheckDataHoc isLoading={companyNewsLoading} error={companyNewsError} className={styles.loadingBox}>
+          <ContentBox className={styles.newsBox}>
           <ul>
             {companyNews.map((news: GlobalNews) => (
               <NewsItem key={news.title} globalNews={news} />
             ))}
           </ul>
+          </ContentBox>
           <SeeAllLink path="">See all Company News</SeeAllLink>
+          </CheckDataHoc>
         </TabPanel>
         <TabPanel>
-        <ul>
-            {pressReleases.length > 0 ? pressReleases.slice(0, 10).map((release: PressRelease) => (
-              <NewsItem key={release.title} pressReleases={release} />
-            )): <Text title="Press Releases not Found"/>}
-        </ul>
-        {pressReleases.length > 10 && <SeeAllLink path="">See all Press Releases</SeeAllLink>}
+          <ul>
+            {pressReleases.length > 0 ? (
+              pressReleases
+                .slice(0, 10)
+                .map((release: PressRelease) => (
+                  <NewsItem key={release.title} pressReleases={release} />
+                ))
+            ) : (
+              <Text title="Press Releases not Found" />
+            )}
+          </ul>
+          {pressReleases.length > 10 && (
+            <SeeAllLink path="">See all Press Releases</SeeAllLink>
+          )}
         </TabPanel>
         <TabPanel>
-        <ul>
-            {priceTargets.length > 0 ? priceTargets.slice(0, 10).map((target: PriceTarget) => (
-              <NewsItem key={target.priceTarget} priceTargets={target} />
-            )): <Text title="Price Targets not Found"/>}
-        </ul>
-        {priceTargets.length > 10 && <SeeAllLink path="">See all Price Targets</SeeAllLink>}
+          <ul>
+            {priceTargets.length > 0 ? (
+              priceTargets
+                .slice(0, 10)
+                .map((target: PriceTarget) => (
+                  <NewsItem key={target.priceTarget} priceTargets={target} />
+                ))
+            ) : (
+              <Text title="Price Targets not Found" />
+            )}
+          </ul>
+          {priceTargets.length > 10 && (
+            <SeeAllLink path="">See all Price Targets</SeeAllLink>
+          )}
         </TabPanel>
       </Tabs>
     </ContentBox>
