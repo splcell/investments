@@ -4,7 +4,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import 'react-tabs/style/react-tabs.scss';
 import {useParams, useSearchParams } from "react-router-dom";
 import { useAppDispatch } from "hooks/hooks";
-import {CompanyChart, Description, Info, KeyRatios, Overview, fetchingCompanyInfo } from "components/CompanyInfo";
+import {CompanyChart, Description, Dividends, Info, KeyRatios, Overview, fetchingCompanyInfo } from "components/CompanyInfo";
 import { MinMax } from "components/CompanyInfo/MinMax/ui/MinMax";
 import { CompanyNews } from "components/News";
 
@@ -41,6 +41,7 @@ const CompanyPage = memo(() => {
             <MinMax />
             <Overview />
             <KeyRatios />
+            <Dividends />
             <Description />
             <CompanyNews />
           </TabPanel>

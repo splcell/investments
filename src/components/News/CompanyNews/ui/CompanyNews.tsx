@@ -27,7 +27,6 @@ import { Text } from "components/Text";
 import { PressRelease } from "../model/types/pressRelease";
 import { PriceTarget } from "../model/types/priceTarget";
 import { CompanyNewsActions } from "../model/slice/companyNewsSlice";
-import { Preloader } from "components/Preloader";
 import { CheckDataHoc } from "components/CheckTopStatus/CheckDataHoc";
 
 export const CompanyNews = memo(() => {
@@ -74,7 +73,9 @@ export const CompanyNews = memo(() => {
           </CheckDataHoc>
         </TabPanel>
         <TabPanel>
-          <ul>
+          <CheckDataHoc isLoading={pressReleasesStatus} error={pressReleasesError} className={styles.loadingBox}>
+            <ContentBox>
+            <ul>
             {pressReleases.length > 0 ? (
               pressReleases
                 .slice(0, 10)
@@ -88,9 +89,14 @@ export const CompanyNews = memo(() => {
           {pressReleases.length > 10 && (
             <SeeAllLink path="">See all Press Releases</SeeAllLink>
           )}
+            </ContentBox>
+          </CheckDataHoc>
+          
         </TabPanel>
         <TabPanel>
-          <ul>
+          <CheckDataHoc isLoading={priceTargetsStatus} error={priceTargetsError} className={styles.loadingBox}>
+            <ContentBox>
+            <ul>
             {priceTargets.length > 0 ? (
               priceTargets
                 .slice(0, 10)
@@ -104,6 +110,8 @@ export const CompanyNews = memo(() => {
           {priceTargets.length > 10 && (
             <SeeAllLink path="">See all Price Targets</SeeAllLink>
           )}
+            </ContentBox>
+          </CheckDataHoc>
         </TabPanel>
       </Tabs>
     </ContentBox>
