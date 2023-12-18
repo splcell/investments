@@ -11,6 +11,7 @@ import { memo, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import styles from "./Dividends.module.scss";
 import { SeeAllLink } from "components/Links";
+import { checkProps } from "helpers/functions/checkProps";
 
 export const Dividends = memo(() => {
   const profile = useSelector(getProfile);
@@ -70,15 +71,15 @@ export const Dividends = memo(() => {
             </li>
             <li className={styles.infoItem}>
               <span>Payment Date:</span>
-              <span>{dividendsInfo[0].paymentDate}</span>
+              <span>{checkProps(dividendsInfo[0].paymentDate)}</span>
             </li>
             <li className={styles.infoItem}>
               <span>Record Date:</span>
-              <span>{dividendsInfo[0].recordDate}</span>
+              <span>{checkProps(dividendsInfo[0].recordDate)}</span>
             </li>
             <li className={styles.infoItem}>
               <span>Declaration Date:</span>
-              <span>{dividendsInfo[0].declarationDate}</span>
+              <span>{checkProps(dividendsInfo[0].declarationDate)}</span>
             </li>
           </ul>
           <SeeAllLink path="">See full Dividends Info</SeeAllLink>
