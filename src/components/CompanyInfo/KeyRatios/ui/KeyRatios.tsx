@@ -37,16 +37,16 @@ export const KeyRatios = memo(() => {
     ratiosData["Current Ratio"] =
       ratio.currentRatioTTM && +ratio.currentRatioTTM.toFixed(2);
     ratiosData["ROE%"] =
-      ratio.returnOnEquityTTM && Math.floor(ratio.returnOnEquityTTM * 100);
+      +ratio.returnOnEquityTTM && Math.floor(ratio.returnOnEquityTTM * 100);
     ratiosData["ROA%"] =
-      ratio.returnOnAssetsTTM && Math.floor(ratio.returnOnAssetsTTM * 100);
+      +ratio.returnOnAssetsTTM && Math.floor(ratio.returnOnAssetsTTM * 100);
     ratiosData["Total Debt / Capitalization"] =
       ratio.totalDebtToCapitalizationTTM &&
       +ratio.totalDebtToCapitalizationTTM.toFixed(2);
     ratiosData["Interest Coverage"] =
-      ratio.interestCoverageTTM && +ratio.interestCoverageTTM.toFixed(2);
+      +ratio.interestCoverageTTM && +ratio.interestCoverageTTM.toFixed(2);
     ratiosData["Free Cash Flow per Share"] =
-      ratio.freeCashFlowPerShareTTM &&
+      +ratio.freeCashFlowPerShareTTM &&
       +ratio.freeCashFlowPerShareTTM.toFixed(2);
   });
 

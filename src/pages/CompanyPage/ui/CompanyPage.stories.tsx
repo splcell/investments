@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { CompanyNews } from './CompanyNews';
+import CompanyPage  from './CompanyPage';
 import { RouterDecorator } from 'helpers/decorators/RouteDecrator';
 import { StoreDecorator } from 'helpers/decorators/StoreDecorator';
 
 
 
 const meta = {
-  title: 'News/CompanyNews',
-  component: CompanyNews,
+  title: 'pages/CompanyPage',
+  component: CompanyPage,
   parameters: {
     
     layout: 'fullscreen',
@@ -16,14 +16,17 @@ const meta = {
   tags: ['autodocs'],
   
   
-} satisfies Meta<typeof CompanyNews>;
+} satisfies Meta<typeof CompanyPage>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 
+
 export const Primary: Story = {
-  
+  parameters: {
+    ticker: 'AAPL'
+  },
   args: {
     
   },

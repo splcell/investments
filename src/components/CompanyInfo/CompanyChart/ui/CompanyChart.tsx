@@ -107,6 +107,8 @@ export const CompanyChart = memo(() => {
     }
   }, [profile]);
 
+  console.log(chartData)
+
   return (
     <CheckDataHoc isLoading={isLoading} error={error} className={styles.loadingBox} boxHeight={430}>
       <ContentBox>

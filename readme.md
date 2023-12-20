@@ -4,7 +4,7 @@ Investments - это информационно-аналитический по�
 
 ## Технологии
 
-**Frontend:** React, Redux-Toolkit, Typescript, Jest, React Testing Library, Storybook, Highcharts Webpack
+**Frontend:** React, Redux-Toolkit, Typescript, Jest, React Testing Library, Storybook, Highcharts, Webpack
 
 **API:** Financial Modeling Prep
 
