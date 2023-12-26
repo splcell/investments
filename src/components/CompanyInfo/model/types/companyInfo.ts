@@ -119,14 +119,6 @@ export interface RatiosTTM{
   priceBookValueRatioTTM: number,
   priceToBookRatioTTM: number,
   priceToSalesRatioTTM: number,
-  priceEarningsRatioTT: number,
-  priceToFreeCashFlowsRatioTT: number,
-  priceToOperatingCashFlowsRatioTT: number,
-  priceCashFlowRatioTT: number,
-  priceEarningsToGrowthRatioTT: number,
-  priceSalesRatioTTM: number,
-  enterpriseValueMultipleTTM: number,
-  priceFairValueTTM: number,
   dividendPerShareTTM: number
 }
 
