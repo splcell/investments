@@ -21,7 +21,7 @@ export const CompanyInfo = memo(() => {
   return(
     <CheckDataHoc isLoading={isLoading} error={error} boxWidth={1400} boxHeight={212} className={styles.loadingBox}>
       <ContentBox>
-      <div className={styles.infoInner}>
+      <div className={styles.infoInner} data-testid='inner'>
         <img src={profile?.image} alt={profile?.companyName} className={styles.logo} />
         <span className={styles.name}>{profile?.companyName}</span>
         <div className={styles.priceInfo}>

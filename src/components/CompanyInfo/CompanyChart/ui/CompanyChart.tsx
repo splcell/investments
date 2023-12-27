@@ -116,6 +116,7 @@ export const CompanyChart = memo(() => {
         highcharts={Highcharts}
         options={options}
         constructorType={"stockChart"}
+        
       />
     </ContentBox>
     </CheckDataHoc>
