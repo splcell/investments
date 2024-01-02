@@ -54,6 +54,10 @@ const companyInfoSlice = createSlice({
     setQuarterReport: (state, action) => {
       state.financialsQuarter = action.payload;
     },
+
+    loadingTest: (state) => {
+      state.isLoading = true
+    }
   },
 
   extraReducers: (build) => {

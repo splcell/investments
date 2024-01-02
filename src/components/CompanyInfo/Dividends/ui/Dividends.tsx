@@ -12,6 +12,7 @@ import { useSelector } from "react-redux";
 import styles from "./Dividends.module.scss";
 import { SeeAllLink } from "components/Links";
 import { checkProps } from "helpers/functions/checkProps";
+import { CheckDataHoc } from "components/CheckTopStatus/CheckDataHoc";
 
 export const Dividends = memo(() => {
   const profile = useSelector(getProfile);
@@ -40,51 +41,65 @@ export const Dividends = memo(() => {
   console.log(dividendsInfo);
 
   return (
-    <ContentBox>
-      <Text title="Dividends" align="center" />
-      <div className={styles.dividendInner}>
-        <Chart
-          chartData={chartData}
-          text={`${profile?.companyName} Dividends (${profile?.currency})`}
-          type="column"
-          color={chartColor}
-          rangeSelectorStatus={false}
-          navigatorStatus={false}
-          scrollBarStatus={false}
-          width={900}
-          pointWidth={40}
-        />
-        <div className={styles.dividendInfo}>
-          <Text title="Last payment" align="center" size={17} />
-          <ul className={styles.infoList}>
-            <li className={styles.infoItem}>
-              <span>Date:</span>
-              <span>{dividendsInfo[0].date}</span>
-            </li>
-            <li className={styles.infoItem}>
-              <span>Dividend ({profile?.currency}):</span>
-              <span>{dividendsInfo[0].dividend.toFixed(2)}</span>
-            </li>
-            <li className={styles.infoItem}>
-              <span>Adjusted Dividend ({profile?.currency}):</span>
-              <span>{dividendsInfo[0].adjDividend.toFixed(2)}</span>
-            </li>
-            <li className={styles.infoItem}>
-              <span>Payment Date:</span>
-              <span>{checkProps(dividendsInfo[0].paymentDate)}</span>
-            </li>
-            <li className={styles.infoItem}>
-              <span>Record Date:</span>
-              <span>{checkProps(dividendsInfo[0].recordDate)}</span>
-            </li>
-            <li className={styles.infoItem}>
-              <span>Declaration Date:</span>
-              <span>{checkProps(dividendsInfo[0].declarationDate)}</span>
-            </li>
-          </ul>
-          <SeeAllLink path="">See full Dividends Info</SeeAllLink>
+    <CheckDataHoc 
+      isLoading={isLoading}
+      error={error}
+      boxWidth={1400}
+      boxHeight={212}
+      className={styles.loadingBox}
+      title="Dividends"
+      bordered={false}
+      align="center"
+      marginTop={70}
+      size={20}
+    >
+      <ContentBox>
+        <Text title="Dividends" align="center" />
+        <div className={styles.dividendInner}>
+          <Chart
+            chartData={chartData}
+            text={`${profile?.companyName} Dividends (${profile?.currency})`}
+            type="column"
+            color={chartColor}
+            rangeSelectorStatus={false}
+            navigatorStatus={false}
+            scrollBarStatus={false}
+            width={900}
+            pointWidth={40}
+            data-testid="dividends"
+          />
+          <div className={styles.dividendInfo}>
+            <Text title="Last payment" align="center" size={17} />
+            <ul className={styles.infoList}>
+              <li className={styles.infoItem}>
+                <span>Date:</span>
+                <span>{dividendsInfo[0].date}</span>
+              </li>
+              <li className={styles.infoItem}>
+                <span>Dividend ({profile?.currency}):</span>
+                <span>{dividendsInfo[0].dividend.toFixed(2)}</span>
+              </li>
+              <li className={styles.infoItem}>
+                <span>Adjusted Dividend ({profile?.currency}):</span>
+                <span>{dividendsInfo[0].adjDividend.toFixed(2)}</span>
+              </li>
+              <li className={styles.infoItem}>
+                <span>Payment Date:</span>
+                <span>{checkProps(dividendsInfo[0].paymentDate)}</span>
+              </li>
+              <li className={styles.infoItem}>
+                <span>Record Date:</span>
+                <span>{checkProps(dividendsInfo[0].recordDate)}</span>
+              </li>
+              <li className={styles.infoItem}>
+                <span>Declaration Date:</span>
+                <span>{checkProps(dividendsInfo[0].declarationDate)}</span>
+              </li>
+            </ul>
+            <SeeAllLink path="">See full Dividends Info</SeeAllLink>
+          </div>
         </div>
-      </div>
-    </ContentBox>
+      </ContentBox>
+    </CheckDataHoc>
   );
 });

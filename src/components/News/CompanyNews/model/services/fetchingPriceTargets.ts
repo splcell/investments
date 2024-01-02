@@ -17,7 +17,7 @@ export const fetchingPriceTargets = createAsyncThunk(
 
 
     } catch (error: Error | any) {
-      return thunkApi.rejectWithValue(error)
+      return thunkApi.rejectWithValue(error.message)
     }
   }
 )
