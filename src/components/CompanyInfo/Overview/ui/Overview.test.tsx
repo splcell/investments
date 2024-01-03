@@ -77,6 +77,7 @@ describe("Company Overview component test", () => {
     );
 
     act(() => {
+      //@ts-ignore
       store.dispatch(fetchingCompanyInfo.pending());
     });
     

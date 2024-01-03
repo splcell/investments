@@ -32,7 +32,7 @@ export const Primary: Story = {
     chartData: chartData,
     text: 'Text',
     type: 'column',
-    color: '#4e4e4e'
+    color: ['#4e4e4e']
   },
   decorators: [RouterDecorator, StoreDecorator]
 };

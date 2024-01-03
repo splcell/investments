@@ -7,7 +7,7 @@ import { CompanyInfoActions } from "components/CompanyInfo/model/slice/companyIn
 import { act } from "react-dom/test-utils";
 import { fetchingCompanyInfo } from "components/CompanyInfo/model/services/fetchingCompanyInfo";
 
-describe("Dividends component", () => {
+describe("Dividends component test", () => {
   const store = createReduxStore();
 
   
@@ -51,6 +51,7 @@ describe("Dividends component", () => {
     );
 
     act(() => {
+      //@ts-ignore
       store.dispatch(fetchingCompanyInfo.pending());
     });
     

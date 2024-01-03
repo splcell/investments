@@ -99,6 +99,7 @@ describe("Key Ratios component", () => {
     );
 
     act(() => {
+      //@ts-ignore
       store.dispatch(fetchingCompanyInfo.pending());
     });
     

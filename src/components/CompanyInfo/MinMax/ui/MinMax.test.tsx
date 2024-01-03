@@ -45,6 +45,7 @@ describe("MinMax component test", () => {
     );
 
     act(() => {
+      //@ts-ignore
       store.dispatch(fetchingCompanyInfo.pending());
     });
     
