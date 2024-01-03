@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkinvestments=self.webpackChunkinvestments||[]).push([[167],{3167:(e,n,s)=>{s.r(n),s.d(n,{default:()=>r});var t=s(5893);const r=(0,s(7294).memo)((function(){return(0,t.jsx)("h2",{children:"Quarterly"})}))}}]);
