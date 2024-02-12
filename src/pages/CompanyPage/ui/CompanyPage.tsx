@@ -7,7 +7,7 @@ import { useAppDispatch } from "hooks/hooks";
 import {CompanyChart, Description, Dividends, Info, KeyRatios, Overview, fetchingCompanyInfo } from "components/CompanyInfo";
 import { MinMax } from "components/CompanyInfo/MinMax/ui/MinMax";
 import { CompanyNews } from "components/News";
-import { Balance, Income } from "components/Reports";
+import { Balance, CashFlow, Income } from "components/Reports";
 
 
 const CompanyPage = memo(() => {
@@ -59,7 +59,9 @@ const CompanyPage = memo(() => {
           <TabPanel>
             <Income />
           </TabPanel>
-          <TabPanel></TabPanel>
+          <TabPanel>
+            <CashFlow />
+          </TabPanel>
           </Tabs>
           
           

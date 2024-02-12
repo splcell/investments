@@ -165,6 +165,69 @@ export const ReportsData = memo(
           return newData
 
         case "CashFlow":
+          newData = {
+            'Net Income': [],
+            'Depreciation and Amortization': [],
+            'Deffered Income Tax': [],
+            'Stock Based Compensation': [],
+            'Change in Working Capital': [],
+            'Accounts Receivables': [],
+            'Inventory': [],
+            'Accounts Payables': [],
+            'Other Working Capital': [],
+            'Othen non Cash Items': [],
+            'Net Cash Provided By Operating Activities': [],
+            'Investments in Property Plant and Equipment': [],
+            'Acquisitions Net': [],
+            'Purchases of Investments': [],
+            'Sales Maturities of Investments': [],
+            'Other Investing Activites': [],
+            'Net Cash Used for Investing Activites': [],
+            'Debt Repayment': [],
+            'Common Stock Issued': [],
+            'Common Stock Repurchased': [],
+            'Dividends Paid': [],
+            'Other Financing Activities': [],
+            'Net Cash Used Provided by Financing Activities': [],
+            'Operating Cash Flow': [],
+            'Capital Expenditure': [],
+            'Free Cash Flow': []
+          };
+
+          report?.forEach(item => {
+            newData['Net Income'].push(item.netIncome);
+            newData['Depreciation and Amortization'].push(item.depreciationAndAmortization);
+            newData['Deffered Income Tax'].push(item.deferredIncomeTax);
+            newData['Stock Based Compensation'].push(item.stockBasedCompensation);
+            newData['Change in Working Capital'].push(item.changeInWorkingCapital);
+            newData['Accounts Receivables'].push(item.accountsReceivables);
+            newData['Inventory'].push(item.inventory);
+            newData['Accounts Payables'].push(item.accountsPayables);
+            newData['Other Working Capital'].push(item.otherWorkingCapital);
+            newData['Othen non Cash Items'].push(item.otherNonCashItems);
+            newData['Net Cash Provided By Operating Activities'].push(item.netCashProvidedByOperatingActivities);
+            newData['Investments in Property Plant and Equipment'].push(item.investmentsInPropertyPlantAndEquipment);
+            newData['Acquisitions Net'].push(item.acquisitionsNet);
+            newData['Purchases of Investments'].push(item.purchasesOfInvestments);
+            newData['Sales Maturities of Investments'].push(item.salesMaturitiesOfInvestments);
+            newData['Other Investing Activites'].push(item.otherInvestingActivites);
+            newData['Net Cash Used for Investing Activites'].push(item.netCashUsedForInvestingActivites);
+            newData['Debt Repayment'].push(item.debtRepayment);
+            newData['Common Stock Issued'].push(item.commonStockIssued);
+            newData['Common Stock Repurchased'].push(item.commonStockRepurchased);
+            newData['Dividends Paid'].push(item.dividendsPaid);
+            newData['Other Financing Activities'].push(item.otherFinancingActivities);
+            newData['Net Cash Used Provided by Financing Activities'].push(item.netCashUsedProvidedByFinancingActivities);
+            newData['Operating Cash Flow'].push(item.operatingCashFlow);
+            newData['Capital Expenditure'].push(item.capitalExpenditure);
+            newData['Free Cash Flow'].push(item.freeCashFlow);
+          });
+
+          Object.keys(newData).map((key) => {
+            newData[key].unshift(key);
+          });
+
+          return newData
       }
 
       return null
@@ -172,7 +235,6 @@ export const ReportsData = memo(
 
 
     const renderItem = useCallback((item: string | number, key: any[]) => {
-      console.log(key[0]);
       if (typeof item !== "string") {
         if (typeof item === "number" && item.toString().includes(".")) {
           if (typeof key[0] === "string" && key[0].indexOf("EPS") === -1) {
